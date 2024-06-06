@@ -8,7 +8,7 @@ This is an algorithm visualizer for the DFS, BFS, Uniform Cost, Greedy, and A* p
 
 # Running
 
-This project requires Python 3 and the `pygame` library
+This project **requires Python 3.10+** (released 4 October 2021) and the `pygame` library. Older versions of Python will not work due to the use of new syntax.
 
 ```bash
 pip install pygame
