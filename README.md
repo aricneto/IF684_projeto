@@ -13,6 +13,10 @@ This project **requires Python 3.10+** (released 4 October 2021) and the `pygame
 ```bash
 pip install pygame
 ```
+To check python version, run
+```bash
+python --version
+```
 
 To run the project, type
 
