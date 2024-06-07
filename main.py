@@ -15,7 +15,7 @@ from tile import MOUNTAIN_TILE, TILE_WEIGHTS, FOOD_TILE
 pygame.init()
 
 # generate map
-map_size = 32  # size of the map
+map_size = 24  # size of the map
 game_map = generate_map(map_size, TILE_WEIGHTS)
 original_map = copy.deepcopy(game_map)
 

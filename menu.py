@@ -22,10 +22,10 @@ def draw_menu(screen, font, SCREEN_HEIGHT, SCREEN_WIDTH):
     info2 = "Click anywhere or press F to create food"
     info3 = "Right click anywhere to teleport agent"
     
-    screen.blit(wm1f, (SCREEN_WIDTH // 2 - wm1f.get_width() // 2, SCREEN_HEIGHT // 2 - 200))
-    screen.blit(wm2f, (SCREEN_WIDTH // 2 - wm2f.get_width() // 2, SCREEN_HEIGHT // 2 - 150))
+    screen.blit(wm1f, (SCREEN_WIDTH // 2 - wm1f.get_width() // 2, 50))
+    screen.blit(wm2f, (SCREEN_WIDTH // 2 - wm2f.get_width() // 2, 100))
     
-    y_offset = SCREEN_HEIGHT // 2 - 50
+    y_offset = 200
     for key, desc in options:
         draw_key(screen, font, y_offset, key, desc, SCREEN_WIDTH)
         y_offset += 50
