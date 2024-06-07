@@ -16,9 +16,10 @@ def draw_menu(screen, font, SCREEN_HEIGHT, SCREEN_WIDTH):
         ("U", "for Uniform"),
         ("G", "for Greedy"),
         ("R", "to generate a new map"),
+        ("F", "to create food"),
     ]
     info1 = "Press F1 to see tile weight information"
-    info2 = "Click anywhere to create food"
+    info2 = "Click anywhere or press F to create food"
     info3 = "Right click anywhere to teleport agent"
     
     screen.blit(wm1f, (SCREEN_WIDTH // 2 - wm1f.get_width() // 2, SCREEN_HEIGHT // 2 - 200))
@@ -63,7 +64,7 @@ def draw_key(screen, font, y_offset, key, desc, SCREEN_WIDTH):
     screen.blit(desc_surf, (SCREEN_WIDTH // 2 - 50, y_offset))
 
 def draw_food_helper(screen, font):
-    message = "Click anywhere to create food"
+    message = "Click anywhere or press F to create food"
     message_surf = font.render(message, True, BLACK)
     message_width = message_surf.get_width() + 20
     message_height = message_surf.get_height() + 20

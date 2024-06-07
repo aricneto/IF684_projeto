@@ -1,7 +1,7 @@
 import random
 import pygame
 from typing import List
-from config import BLACK, BLOCK_SIZE, GREEN, LIGHT_YELLOW, ORANGE, OVERLAY_FONT_SIZE, RED, WHITE, YELLOW
+from config import BLACK, BLOCK_SIZE, BLUE, GREEN, LIGHT_YELLOW, ORANGE, OVERLAY_FONT_SIZE, RED, WHITE, YELLOW
 from tile import Tile, BLANK_TILE, TREE_TILE, STONE_TILE, MOUNTAIN_TILE, WATER_TILE, TILE_WEIGHTS
 from utils import interpolate_color
 
@@ -104,8 +104,8 @@ def draw_path(screen, surface, path, current_step):
         x, y = path[step]
         center_x = x * BLOCK_SIZE + BLOCK_SIZE // 2
         center_y = y * BLOCK_SIZE + BLOCK_SIZE // 2
-        pygame.draw.circle(screen, BLACK, (center_x, center_y), BLOCK_SIZE // 6 + 2)
-        pygame.draw.circle(screen, WHITE, (center_x, center_y), BLOCK_SIZE // 6)
+        pygame.draw.circle(screen, BLUE, (center_x, center_y), BLOCK_SIZE // 6 + 2)
+        pygame.draw.circle(screen, RED, (center_x, center_y), BLOCK_SIZE // 6)
         screen.blit(surface, (x * BLOCK_SIZE, y * BLOCK_SIZE))
 
 def draw_steps(screen, surface_visited, surface_target, visited, frontiers, current_step):

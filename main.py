@@ -65,6 +65,7 @@ marked_surface = pygame.Surface((BLOCK_SIZE, BLOCK_SIZE), pygame.SRCALPHA)
 
 finished_steps = True
 can_walk = True # flag to allow player movement
+add_food = False
 
 while running:
     current_time = pygame.time.get_ticks()
@@ -141,18 +142,33 @@ while running:
                 algorithm_selected = None
                 heuristic_selected = None
 
+            # random food when pressing F
+            elif event.key == pygame.K_f:
+                add_food = True
+
             
-        elif event.type == pygame.MOUSEBUTTONDOWN and algorithm_selected and heuristic_selected: 
+        elif (add_food or event.type == pygame.MOUSEBUTTONDOWN) and algorithm_selected and heuristic_selected: 
             # add food on mouse click
-            if event.button == 1:  # left mouse button
-                # get the position of the mouse click
-                x, y = event.pos
+            if add_food or (event and event.button == 1):  # left mouse button
+                if add_food:
+                    add_food = False
+                    # set initial food position (can't be obstructed)
+                    while True:
+                        x, y = (randint(0, map_size - 1), randint(0, map_size - 1))
+                        if game_map[y][x].cost != -1:
+                            break
+                else:
+                    # get the position of the mouse click
+                    x, y = event.pos
+                    x = x // BLOCK_SIZE
+                    y = y // BLOCK_SIZE
 
-                # check if the tile is not obstructed
-                if game_map[y // BLOCK_SIZE][x // BLOCK_SIZE].cost == -1:
-                    continue
+                    # check if the tile is not obstructed
+                    if game_map[y][x].cost == -1:
+                        continue
 
-                food_position = (x // BLOCK_SIZE, y // BLOCK_SIZE)
+
+                food_position = (x, y)
 
                 # reset path variables
                 path = None
@@ -181,7 +197,7 @@ while running:
                         path, visited_nodes, frontier_nodes = priority_search.search(tuple(agent_pos), food_position, "uniform")
 
                 next_move_time = current_time + move_delay
-            if event.button == 3 and can_walk: # right mouse button
+            elif not add_food and event and event.button == 3 and can_walk: # right mouse button
                 # teleport agent
                 x, y = event.pos
 
