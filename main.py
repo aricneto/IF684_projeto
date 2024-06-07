@@ -180,7 +180,7 @@ while running:
                 game_map[food_position[1]][food_position[0]] = FOOD_TILE
 
                 # call pathfinding algorithm
-                priority_search = PrioritySearch(game_map, heuristic_selected) # type: ignore
+                priority_search = PrioritySearch(game_map, heuristic_selected if heuristic_selected != True else "manhattan")
                 depth_search = DFS(game_map)
                 breadth_search = Breadth(game_map)
 
